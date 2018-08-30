@@ -9,7 +9,7 @@ const mockData = [
 ]
 
 toDoRouter.get("/", (req, res, next) => {
-  res.json({status: 200, message: "", data: mockData});
+  res.json({toDoList: mockData});
 });
 
 toDoRouter.get("/error", (req, res, next) => {
