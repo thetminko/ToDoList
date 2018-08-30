@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { json } from '../common/responseObj';
 
 const toDoRouter = Router();
 
