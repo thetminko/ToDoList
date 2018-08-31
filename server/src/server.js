@@ -24,7 +24,7 @@ server.use((req, res, next) => {
 });
 
 // Request logging middleware
-server.use("*", (req, res, next) => {
+server.use((req, res, next) => {
     logger().log("Requested URL: ", req.originalUrl);
     next();
 });
@@ -46,7 +46,7 @@ server.use("/logout", logoutRouter);
 
 
 // Protected resource filters
-server.use("*", (req, res, next) => {
+server.use((req, res, next) => {
     loginFilter();
 
     function loginFilter() {
