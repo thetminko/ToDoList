@@ -6,7 +6,6 @@ const APP_CONFIG = {
     "port": 2000
 }
 
-
 /* ----------------------- SERVER START UP CONFIG ------------------------- */
 
 server.listen(APP_CONFIG.port, () => {
