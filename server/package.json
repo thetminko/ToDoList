@@ -12,6 +12,7 @@
   "author": "Thet Min Ko",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3"
   },
   "devDependencies": {
