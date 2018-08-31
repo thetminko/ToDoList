@@ -18,8 +18,8 @@ server.use(cookieParser());
 
 // CORS Config middleware - Can be replaced with Cors() library
 server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Origin", SERVER_CONFIG["cors-allow-origin"]);
+    res.header("Access-Control-Allow-Headers", SERVER_CONFIG["cors-allow-headers"]);
     next();
 });
 
