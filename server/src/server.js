@@ -47,7 +47,8 @@ server.use("/logout", logoutRouter);
 
 // Protected resource filters
 server.use((req, res, next) => {
-    loginFilter();
+    next(); // temporary disable for testing
+    // loginFilter();
 
     function loginFilter() {
         if (!isLoggedIn(req.cookies)) {

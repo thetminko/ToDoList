@@ -1,15 +1,7 @@
-import { LIST_TO_DO_BEGIN, LIST_TO_DO_SUCCESS, LIST_TO_DO_FAIL } from '../action_types/todolist.actiontypes';
+import { STORE_TO_DO_LIST_DATA } from '../action_types/todolist.actiontypes';
 
-export const fetchToDoListBegin = () => ({
-   type: LIST_TO_DO_BEGIN
-});
-
-export const fetchToDoListSuccess = (data) => ({
-    type: LIST_TO_DO_SUCCESS,
+export const storeToDoListData = (data) => ({
+    type: STORE_TO_DO_LIST_DATA,
     data
-});
-
-export const fetchToDoListFail = () => ({
-    type: LIST_TO_DO_FAIL
 });
 

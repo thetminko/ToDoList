@@ -2,43 +2,63 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import {
-  fetchToDoListBegin,
-  fetchToDoListSuccess
+  storeToDoListData
 } from "./redux/actions/todolist.actions";
 
 // import "./App.css";
 
 class App extends Component {
-  componentWillMount() {
-    this.fetchData(this.props);
+
+  constructor() {
+    super();
+    state: {
+      loading: false
+    }
   }
 
-  fetchData = props => {
-    props.dispatch(fetchToDoListBegin());
+  componentWillMount() {
+    this.fetchData();
+  }
+
+  fetchData = () => {
+    this.setState({ loading: true });
+
     axios.get("http://localhost:2000").then(res => {
-      props.dispatch(fetchToDoListSuccess(res.data.toDoList));
+      this.props.dispatch(storeToDoListData(res.data.toDoList));
     }).catch((err) => {
       console.error(err);
     }).then(() => {
+      this.setState({ loading: false });
       console.log("Always execute this!")
     });
   };
 
-  displayLoading = loading => {
-    if (loading) {
-      return <p>Loading</p>;
-    }
+  onAdd = (e) => {
+    // this.props.dispatch
   };
+
+  // return object directly
+  displayLoading = () => (
+    <p>Loading</p>
+  );
+
+  // returning a function
+  renderData = () => {
+    return (
+      <ul>
+        {this.props.data.map((i) => {
+          return <li key={i.id}>{i.value}</li>;
+        })}
+      </ul>
+    )
+  }
 
   render = () => {
     return (
       <div>
-        {this.displayLoading(this.props.loading)}
-        <ul>
-          {this.props.data.map(i => {
-            return <li key={i.id}>{i.value}</li>;
-          })}
-        </ul>
+        {
+          this.state.loading ? this.displayLoading : this.renderData()
+        }
       </div>
     );
   };
@@ -46,7 +66,6 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    loading: state.toDoListReducer.loading,
     data: state.toDoListReducer.toDoList
   };
 }

@@ -1,3 +1,1 @@
-export const LIST_TO_DO_BEGIN = "LIST_TO_DO_BEGIN";
-export const LIST_TO_DO_SUCCESS = "LIST_TO_DO_SUCCESS";
-export const LIST_TO_DO_FAIL = "LIST_TO_DO_FAIL";
+export const STORE_TO_DO_LIST_DATA = "STORE_TO_DO_LIST_DATA";
